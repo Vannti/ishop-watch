@@ -12,12 +12,12 @@ class RolesSeeder extends Seeder
     public function run()
     {
         $user = \App\Models\Role::create([
-            'name' => 'User',
-            'slug' => 'user',
-            'permissions' => [
-                'buy-product' => true
-            ]
-        ]);
+        'name' => 'User',
+        'slug' => 'user',
+        'permissions' => [
+            'buy-product' => true
+        ]
+    ]);
         $admin = \App\Models\Role::create([
             'name' => 'Admin',
             'slug' => 'amdin',

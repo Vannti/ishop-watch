@@ -14,8 +14,8 @@ class CreateRolesUserTable extends Migration
     public function up()
     {
         Schema::create('roles_user', function (Blueprint $table) {
-            $table->unsignedInteger('userId');
-            $table->unsignedInteger('roleId');
+            $table->bigInteger('userId');
+            $table->bigInteger('roleId');
             $table->unique(['userId', 'roleId']);
             $table->foreign('userId')->references('id')->on('users');
             $table->foreign('roleId')->references('id')->on('roles');
