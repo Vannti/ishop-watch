@@ -33,4 +33,19 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'roles_user', 'userId', 'roleId');
     }
+
+    public function hasAccess(array $permissions): bool
+    {
+        foreach ($this->roles as $role){
+            if ($role->hasAccess($permissions)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasRole($roleSlug): bool
+    {
+        return $this->roles()->where('slug', $roleSlug)->count() == 1;
+    }
 }

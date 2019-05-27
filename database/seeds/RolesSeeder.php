@@ -20,7 +20,7 @@ class RolesSeeder extends Seeder
     ]);
         $admin = \App\Models\Role::create([
             'name' => 'Admin',
-            'slug' => 'amdin',
+            'slug' => 'admin',
             'permissions' => [
                 'edit-product' => true,
                 'add-product' => true
