@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateCurrenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('title');
-            $table->string('alias')->unique();
-            $table->string('keywords')->nullable();
-            $table->string('description')->nullable();
+            $table->string('code', 3);
+            $table->string('symbol', 10);
+            $table->float('value', 15,2);
+            $table->enum('base', [0,1]);
         });
     }
 
@@ -29,6 +30,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('currencies');
     }
 }

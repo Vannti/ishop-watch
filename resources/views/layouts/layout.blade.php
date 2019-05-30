@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Luxury Watches</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <title>@yield('title', 'Luxury watches')</title>
+    <script src="{{ asset('/js/popper.min.js') }}" defer></script>
+    <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    <script src="{{ asset('/js/jquery-1.11.0.min.js') }}"></script>
     <!--theme-style-->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--start-menu-->
+    <script src="{{ asset('/js/simpleCart.min.js') }}"> </script>
+    <link href="{{ asset('/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
+    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+    <!--dropdown-->
+    <script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
 </head>
 <body>
 <!--top-header-->
@@ -38,15 +46,28 @@
                 </div>
             </div>
             <div class="col-md-6 top-header-left">
+
                 <div class="cart box_1">
-                    <a href="checkout.html">
-                        <div class="total">
-                            <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt="" />
-                    </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
-                    <div class="clearfix"> </div>
+                    @guest
+                        <a class="btn btn-default" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @if(Route::has('register'))
+                            <a class="btn btn-default" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                    @else
+                        <p class="text-white">{{ Auth::user()->login }}</p>
+
+                        <a class="btn btn-default dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endguest
                 </div>
+
             </div>
             <div class="clearfix"></div>
         </div>
@@ -55,7 +76,7 @@
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="{{route('main')}}"><h1>{{__('Luxury Watches')}}</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -281,12 +302,6 @@
     </div>
 </div>
 <!--footer-end-->
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--start-menu-->
-<script src="js/simpleCart.min.js"> </script>
-<script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>
+
 </body>
 </html>

@@ -13,7 +13,7 @@ class AssignRole extends Command
      *
      * @var string
      */
-    protected $signature = 'assign:role {role} {userId}';
+    protected $signature = 'assign:role {role} {user_id}';
 
     /**
      * The console command description.
@@ -41,14 +41,14 @@ class AssignRole extends Command
     {
         try{
             $slug = $this->argument('role');
-            $userId = $this->argument('userId');
+            $user_id = $this->argument('user_id');
 
             $role = Role::where('slug', $slug)->first();
-            $user = User::where('id', $userId)->first();
+            $user = User::where('id', $user_id)->first();
 
             if ($role && $user){
                 $user->roles()->attach($role);
-                $this->info("User ID: $userId now has role $slug");
+                $this->info("User ID: $user_id now has role $slug");
             }
             else {
                 if (!$role){
@@ -56,7 +56,7 @@ class AssignRole extends Command
                 }
 
                 if (!$user){
-                    $this->error("Invalid User Id $userId");
+                    $this->error("Invalid User Id $user_id");
                 }
             }
         }

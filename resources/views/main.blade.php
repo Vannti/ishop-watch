@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@section('title', "Main")
+
 @section('content')
     <!--banner-starts-->
     <div class="bnr" id="home">
