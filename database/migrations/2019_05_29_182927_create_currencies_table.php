@@ -19,7 +19,7 @@ class CreateCurrenciesTable extends Migration
             $table->string('code', 3);
             $table->string('symbol', 10);
             $table->float('value', 15,2);
-            $table->enum('base', [0,1]);
+            $table->enum('base', [0,1])->default(0);
         });
     }
 

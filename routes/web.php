@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'MainController@index')->name('main');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/main', 'MainController@index')->name('main');
+
+Route::get('/product/{alias}', 'ProductController@show');
