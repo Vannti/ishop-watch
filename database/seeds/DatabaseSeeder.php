@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BrandsSeeder::class);
         $this->call(CurrenciesSeeder::class);
         $this->call(ProductsSeeder::class);
+        $this->call(CategoriesSeeder::class);
     }
 }

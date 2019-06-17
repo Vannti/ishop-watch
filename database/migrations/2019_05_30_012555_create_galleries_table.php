@@ -17,7 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->Increments('id');
             $table->Integer('product_id')->unsigned();
             $table->string('img');
-            $table->foreign('product_id')->references('products')->on('id')
+            $table->foreign('product_id')->references('id')->on('products')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }

@@ -12,7 +12,7 @@ class Currency extends Model
     protected $table = 'currencies';
 
     protected $fillable = [
-        'title', 'code', 'symbol', 'value', 'base'
+        'title', 'code', 'symbol', 'value'
     ];
 
     public function orders()

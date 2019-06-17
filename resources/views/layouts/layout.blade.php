@@ -28,11 +28,7 @@
             <div class="col-md-6 top-header-left">
                 <div class="drop">
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
-                            <option value="" class="label">Dollar :</option>
-                            <option value="1">Dollar</option>
-                            <option value="2">Euro</option>
-                        </select>
+                        @widget('currency')
                     </div>
                     <div class="box1">
                         <select tabindex="4" class="dropdown">
@@ -85,136 +81,40 @@
         <div class="header">
             <div class="col-md-9 header-left">
                 <div class="top-nav">
-                    <ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
-                        <li class="grid"><a href="#">Men</a>
+                    <ul class="memenu skyblue"><li class="active"><a href="{{route('main')}}">{{__('Main')}}</a></li>
+                        <li class="grid"><a href="{{route('products')}}">{{__('Products')}}</a>
                             <div class="mepanel">
                                 <div class="row">
                                     <div class="col1 me-one">
-                                        <h4>Shop</h4>
+                                        <h4>{{__('Categories')}}</h4>
                                         <ul>
-                                            <li><a href="products.html">New Arrivals</a></li>
-                                            <li><a href="products.html">Blazers</a></li>
-                                            <li><a href="products.html">Swem Wear</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Handbags</a></li>
-                                            <li><a href="products.html">T-Shirts</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">My Shopping Bag</a></li>
+                                            @foreach($categories as $category)
+                                                <li>
+                                                    <a href="{{route('products.category', [
+                                                        'category' => $category->alias])}}">
+                                                        {{$category->alias}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <div class="col1 me-one">
-                                        <h4>Style Zone</h4>
+                                        <h4>{{__('Popular Brands')}}</h4>
                                         <ul>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">Brands</a></li>
-                                            <li><a href="products.html">Coats</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.html">499 Store</a></li>
-                                            <li><a href="products.html">Fastrack</a></li>
-                                            <li><a href="products.html">Casio</a></li>
-                                            <li><a href="products.html">Fossil</a></li>
-                                            <li><a href="products.html">Maxima</a></li>
-                                            <li><a href="products.html">Timex</a></li>
-                                            <li><a href="products.html">TomTom</a></li>
-                                            <li><a href="products.html">Titan</a></li>
+                                            @foreach($brands as $brand)
+                                                <li>
+                                                    <a href="{{route('products.brand', [
+                                                        'brand' => $brand->alias])}}">
+                                                        {{$brand->title}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <li class="grid"><a href="#">Women</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1 me-one">
-                                        <h4>Shop</h4>
-                                        <ul>
-                                            <li><a href="products.html">New Arrivals</a></li>
-                                            <li><a href="products.html">Blazers</a></li>
-                                            <li><a href="products.html">Swem Wear</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Handbags</a></li>
-                                            <li><a href="products.html">T-Shirts</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">My Shopping Bag</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Style Zone</h4>
-                                        <ul>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">Brands</a></li>
-                                            <li><a href="products.html">Coats</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.html">499 Store</a></li>
-                                            <li><a href="products.html">Fastrack</a></li>
-                                            <li><a href="products.html">Casio</a></li>
-                                            <li><a href="products.html">Fossil</a></li>
-                                            <li><a href="products.html">Maxima</a></li>
-                                            <li><a href="products.html">Timex</a></li>
-                                            <li><a href="products.html">TomTom</a></li>
-                                            <li><a href="products.html">Titan</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="grid"><a href="#">Kids</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1 me-one">
-                                        <h4>Shop</h4>
-                                        <ul>
-                                            <li><a href="products.html">New Arrivals</a></li>
-                                            <li><a href="products.html">Blazers</a></li>
-                                            <li><a href="products.html">Swem Wear</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Handbags</a></li>
-                                            <li><a href="products.html">T-Shirts</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">My Shopping Bag</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Style Zone</h4>
-                                        <ul>
-                                            <li><a href="products.html">Shoes</a></li>
-                                            <li><a href="products.html">Watches</a></li>
-                                            <li><a href="products.html">Brands</a></li>
-                                            <li><a href="products.html">Coats</a></li>
-                                            <li><a href="products.html">Accessories</a></li>
-                                            <li><a href="products.html">Trousers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>Popular Brands</h4>
-                                        <ul>
-                                            <li><a href="products.html">499 Store</a></li>
-                                            <li><a href="products.html">Fastrack</a></li>
-                                            <li><a href="products.html">Casio</a></li>
-                                            <li><a href="products.html">Fossil</a></li>
-                                            <li><a href="products.html">Maxima</a></li>
-                                            <li><a href="products.html">Timex</a></li>
-                                            <li><a href="products.html">TomTom</a></li>
-                                            <li><a href="products.html">Titan</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+
                         <li class="grid"><a href="typo.html">Blog</a>
                         </li>
                         <li class="grid"><a href="contact.html">Contact</a>
@@ -303,5 +203,6 @@
 </div>
 <!--footer-end-->
 
+<script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>

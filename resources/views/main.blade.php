@@ -29,7 +29,7 @@
                 @foreach($brands as $brand)
                     <div class="col-md-4 about-left">
                         <figure class="effect-bubba">
-                            <img class="img-responsive" src=/images/{{$brand->img}} alt=""/>
+                            <img class="img-responsive" src="{{asset('images/'.$brand->img)}}" alt=""/>
                             <figcaption>
                                 <h2>{{$brand->title}}</h2>
                                 <p>{{$brand->description}}</p>
@@ -45,7 +45,8 @@
     <!--about-end-->
 
     <!--product-starts-->
-    @if(count($hits))
+    @if(count($hits) && isset($_COOKIE['currency']))
+        <?php $curr = json_decode($_COOKIE['currency']); ?>
     <div class="product">
     <div class="container">
         <div class="product-top">
@@ -53,20 +54,26 @@
                 @foreach($hits as $hit)
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="#" class="mask"><img class="img-responsive zoom-img" src="images/{{$hit->img}}" alt="" /></a>
+                        <a href="{{route('product.show', ['alias' => $hit->alias])}}" class="mask">
+                            <img class="img-responsive zoom-img" src="{{asset('images/'.$hit->img)}}" alt="" />
+                        </a>
                         <div class="product-bottom">
-                            <h3><a href="#">{{$hit->title}}</a></h3>
-                            <p>Explore Now</p>
+                            <h3><a href="{{route('product.show', ['alias' => $hit->alias])}}">{{$hit->title}}</a></h3>
+                            <p>{{__('Explore Now')}}</p>
                             <h4><a class="add-to-cart-link" href="cart/add?id={{$hit->id}}"><i></i></a>
-                                <span class=" item_price">$ {{$hit->price}}</span>
+                                <span class="item_price">
+                                    {{$curr->symbol}} {{$hit->price * $curr->value}}
+                                </span>
                                 @if($hit->old_price)
-                                    <small><del>{{$hit->old_price}}</del></small>
+                                    <small><del>{{$hit->old_price * $curr->value}}</del></small>
                                 @endif
                             </h4>
                         </div>
-                        <div class="srch">
-                            <span>-50%</span>
-                        </div>
+                        @if($hit->old_price)
+                            <div class="srch">
+                                <span>-{{(int)(($hit->price/$hit->old_price)*100)}}%</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 @endforeach
