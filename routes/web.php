@@ -28,3 +28,5 @@ Route::get('/product/{alias}', 'ProductController@show')->name('product.show');
 Route::get('/products?brand={brand}', 'ProductController@index')->name('products.brand');
 
 Route::get('/products?category={category}', 'ProductController@index')->name('products.category');
+
+Route::get('/cart/add', 'CartController@addProduct')->name('cart.addProduct');

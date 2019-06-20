@@ -1,0 +1,46 @@
+@if(!empty($_SESSION['cart']))
+    <?php print_r($_SESSION) ?>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>{{__('Image')}}</th>
+                <th>{{__('Name')}}</th>
+                <th>{{__('Quantity')}}</th>
+                <th>{{__('Price')}}</th>
+                <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($_SESSION['cart'] as $id => $item)
+                <td>
+                    <a href="{{route('product.show', ['alias' => $item['alias']])}}">
+                        <img src="{{asset('/images/'.$item['img'])}}" alt="{{$item['alias']}}">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{route('product.show', ['alias' => $item['alias']])}}">{{$item['title']}}</a>
+                </td>
+                <td>{{$item['qty']}}</td>
+                <td>{{$_SESSION['cart.currency']->symbol}} {{$item['price']}}</td>
+                <td>
+                    <span data-id="{{$id}}" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span>
+                </td>
+            @endforeach
+            <tr>
+                <td>Итого:</td>
+                <td colspan="4" class="text-right cart-qty">{{$_SESSION['cart.qty']}}</td>
+            </tr>
+            <tr>
+                <td>Сумма:</td>
+                <td colspan="4" class="text-right cart-sum">
+                    {{$_SESSION['cart.currency']->symbol}}
+                    {{$_SESSION['cart.sum']}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+@else
+    <h3>{{__('Empty')}}</h3>
+@endif

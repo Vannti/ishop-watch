@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Widgets;
 
 use App\Models\Currency;

@@ -8,13 +8,13 @@
     <div  id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
             <li>
-                <img src="images/bnr-1.jpg" alt=""/>
+                <img src="{{asset('images/bnr-1.jpg')}}" alt=""/>
             </li>
             <li>
-                <img src="images/bnr-2.jpg" alt=""/>
+                <img src="{{asset('images/bnr-2.jpg')}}" alt=""/>
             </li>
             <li>
-                <img src="images/bnr-3.jpg" alt=""/>
+                <img src="{{asset('images/bnr-3.jpg')}}" alt=""/>
             </li>
         </ul>
     </div>
@@ -22,6 +22,7 @@
     </div>
     <!--banner-ends-->
     <!--about-starts-->
+
     @if(count($brands))
     <div class="about">
         <div class="container">
@@ -60,7 +61,8 @@
                         <div class="product-bottom">
                             <h3><a href="{{route('product.show', ['alias' => $hit->alias])}}">{{$hit->title}}</a></h3>
                             <p>{{__('Explore Now')}}</p>
-                            <h4><a class="add-to-cart-link" href="cart/add?id={{$hit->id}}"><i></i></a>
+                            <h4><a data-id="{{$hit->id}}" class="add-to-cart-link"
+                                   href="{{route('cart.addProduct')}}"><i></i></a>
                                 <span class="item_price">
                                     {{$curr->symbol}} {{$hit->price * $curr->value}}
                                 </span>

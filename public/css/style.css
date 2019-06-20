@@ -3065,3 +3065,9 @@ ul.tag-men {
 }
 }
 /*--media-quaries-end-here--*/
+
+.quantity {
+	margin-top: 2.5em;
+	margin-right: 10px;
+	float: left;
+}

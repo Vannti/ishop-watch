@@ -6,19 +6,15 @@
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="{{ asset('/js/jquery-1.11.0.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js')}} "></script>
     <!--theme-style-->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
-    <script src="{{ asset('/js/simpleCart.min.js') }}"> </script>
-    <link href="{{ asset('/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
-    <!--dropdown-->
-    <script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
 </head>
 <body>
 <!--top-header-->
@@ -72,7 +68,7 @@
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="{{route('main')}}"><h1>{{__('Luxury Watches')}}</h1></a>
+    <a href="{{route('main')}}"><h1>{{__('Watches shop')}}</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -81,45 +77,7 @@
         <div class="header">
             <div class="col-md-9 header-left">
                 <div class="top-nav">
-                    <ul class="memenu skyblue"><li class="active"><a href="{{route('main')}}">{{__('Main')}}</a></li>
-                        <li class="grid"><a href="{{route('products')}}">{{__('Products')}}</a>
-                            <div class="mepanel">
-                                <div class="row">
-                                    <div class="col1 me-one">
-                                        <h4>{{__('Categories')}}</h4>
-                                        <ul>
-                                            @foreach($categories as $category)
-                                                <li>
-                                                    <a href="{{route('products.category', [
-                                                        'category' => $category->alias])}}">
-                                                        {{$category->alias}}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <div class="col1 me-one">
-                                        <h4>{{__('Popular Brands')}}</h4>
-                                        <ul>
-                                            @foreach($brands as $brand)
-                                                <li>
-                                                    <a href="{{route('products.brand', [
-                                                        'brand' => $brand->alias])}}">
-                                                        {{$brand->title}}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="grid"><a href="typo.html">Blog</a>
-                        </li>
-                        <li class="grid"><a href="contact.html">Contact</a>
-                        </li>
-                    </ul>
+                    @widget('menu')
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -203,6 +161,36 @@
 </div>
 <!--footer-end-->
 
-<script src="{{asset('js/main.js')}}"></script>
+<!--Modal-start-->
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{__('Cart')}}</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Continue buying')}}</button>
+                <a href="#" type="button" class="btn btn-primary">{{__('Make order')}}</a>
+                <button type="button" class="btn btn-danger" onclick="clearCart()">{{__('Save changes')}}</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!--modal-end-->
+
+<script src="{{ asset('js/main.js') }}"></script>
+
+<script src="{{ asset('/js/simpleCart.min.js') }}"> </script>
+<script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!--dropdown-->
+<script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
+
 </body>
 </html>

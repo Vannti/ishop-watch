@@ -13,7 +13,7 @@ class MainController extends Controller
     {
         $brands = Brand::all();
 
-        $hits = Product::all()->where('hit', '=', '1')->take(8);
+        $hits = Product::all()->where('hit','1')->take(8);
 
         $categories = Category::all();
 

@@ -14,8 +14,8 @@ class Gallery extends Model
         'product_id', 'img'
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

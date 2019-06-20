@@ -37,8 +37,8 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function gallery()
+    public function galleries()
     {
-        return $this->belongsTo(Gallery::class);
+        return $this->hasMany(Gallery::class);
     }
 }
