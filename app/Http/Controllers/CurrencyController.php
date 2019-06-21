@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Currency;
 
 class CurrencyController extends Controller
@@ -13,6 +14,7 @@ class CurrencyController extends Controller
             $currency = Currency::where('code', $currency_code)->first();
             if ($currency){
                 setcookie('currency', $currency, time()+3600*24*7, '/');
+                Cart::recalculate($currency);
             }
         }
         return redirect()->back();

@@ -38,7 +38,24 @@
                 </div>
             </div>
             <div class="col-md-6 top-header-left">
-
+                <div class="cart box_1">
+                    <a href="#" onclick="getCart(); return false;">
+                        <div class="total">
+                            <img src="{{asset('/images/cart-1.png')}}" alt="" />
+                            @if(!empty($_SESSION['cart']))
+                                <span class="simpleCart_total">
+                                    {{$_SESSION['cart.currency']->symbol}}
+                                    {{$_SESSION['cart.sum']}}
+                                </span>
+                            @else
+                                <span class="simpleCart_total">{{__('Empty')}}</span>
+                            @endif
+                        </div>
+                    </a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!--<div class="col-md-6 top-header-left">
                 <div class="cart box_1">
                     @guest
                         <a class="btn btn-default" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -59,8 +76,7 @@
                         </form>
                     @endguest
                 </div>
-
-            </div>
+            </div>-->
             <div class="clearfix"></div>
         </div>
     </div>
@@ -177,7 +193,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Continue buying')}}</button>
                 <a href="#" type="button" class="btn btn-primary">{{__('Make order')}}</a>
-                <button type="button" class="btn btn-danger" onclick="clearCart()">{{__('Save changes')}}</button>
+                <button type="button" class="btn btn-danger" onclick="clearCart();">{{__('Clear cart')}}</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -186,7 +202,7 @@
 
 <script src="{{ asset('js/main.js') }}"></script>
 
-<script src="{{ asset('/js/simpleCart.min.js') }}"> </script>
+<!--<script src="{{ asset('/js/simpleCart.min.js') }}"> </script>-->
 <script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
