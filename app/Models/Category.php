@@ -8,9 +8,15 @@ class Category extends Model
 {
     public $timestamps = false;
 
-    protected $table = 'category';
+    protected $table = 'categories';
 
     protected $fillable = [
-        'title', 'alias', 'parent_id', 'keywords', 'description'
+        'title', 'alias', 'keywords', 'description'
     ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'categories_products',
+            'category_id', 'product_id');
+    }
 }
