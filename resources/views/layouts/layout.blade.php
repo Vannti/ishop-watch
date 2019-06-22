@@ -2,11 +2,13 @@
 <html>
 <head>
     <title>@yield('title', 'Luxury watches')</title>
-    <script src="{{ asset('/js/popper.min.js') }}" defer></script>
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="{{ asset('/js/jquery-1.11.0.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}} "></script>
+    <script src="{{ asset('/js/popper.min.js') }}" defer></script>
+
+    <script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
     <!--theme-style-->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -52,31 +54,40 @@
                             @endif
                         </div>
                     </a>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <!--<div class="col-md-6 top-header-left">
-                <div class="cart box_1">
                     @guest
                         <a class="btn btn-default" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if(Route::has('register'))
                             <a class="btn btn-default" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     @else
-                        <p class="text-white">{{ Auth::user()->login }}</p>
-
-                        <a class="btn btn-default dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                    <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                {{ Auth::user()->login }}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a class="btn btn-default" href="#">
+                                        {{__('My orders')}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-default" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </ul>
+                        </div>
                     @endguest
+
+                    <div class="clearfix"></div>
                 </div>
-            </div>-->
+            </div>
             <div class="clearfix"></div>
         </div>
     </div>
@@ -99,8 +110,12 @@
             </div>
             <div class="col-md-3 header-right">
                 <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">
+                    <form action="{{route('search')}}" method="GET" autocomplete="off">
+                        <input type="text" class="typeahead" id="typeahead" name="s" placeholder="{{__('Search')}}">
+                        <input type="submit" value="">
+                    </form>
+                    <!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                    <input type="submit" value="">-->
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -200,13 +215,13 @@
 </div>
 <!--modal-end-->
 
-<script src="{{ asset('js/main.js') }}"></script>
 
+<script src="{{asset('/js/typeahead.bundle.js')}}"></script>
+<script src="{{ asset('/js/main.js') }}"></script>
 <!--<script src="{{ asset('/js/simpleCart.min.js') }}"> </script>-->
 <script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <!--dropdown-->
-<script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
 
 </body>
 </html>

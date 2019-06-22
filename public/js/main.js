@@ -1,3 +1,32 @@
+/* Search */
+var products = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+        wildcard: '%QUERY',
+        url: '/search/typeahead?query=%QUERY'
+    }
+});
+
+products.initialize();
+
+$('#typeahead').typeahead(
+    {
+        highlight: true
+    },
+    {
+        name: 'products',
+        display: 'title',
+        limit: 9,
+        source: products
+});
+
+$('#typeahead').bind('typeahead:select', function(ev, suggestion){
+    window.location = '/search/?s=' + encodeURIComponent(suggestion.title);
+});
+/* End Search */
+
+
 /*Cart*/
 $('body').on('click', '.add-to-cart-link', function (e) {
     e.preventDefault();
@@ -76,7 +105,7 @@ function clearCart(){
         }
     });
 }
-/*Cart*/
+/* End Cart */
 
 $('#currency').change(function (){
     window.location = '/currency/' + $(this).val();

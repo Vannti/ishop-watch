@@ -36,3 +36,7 @@ Route::get('/cart/show', 'CartController@show')->name('cart.show');
 Route::get('/cart/delete', 'CartController@delete')->name('cart.delete');
 
 Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
+
+Route::get('/search/typeahead', 'SearchController@typeahead')->name('search.typeahead');
+
+Route::get('/search', 'SearchController@index')->name('search');

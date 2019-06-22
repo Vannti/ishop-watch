@@ -7,6 +7,7 @@
         <div class="container">
             <div class="prdt-top">
                 <div class="col-md-9 prdt-left">
+                    @if(count($products))
                     <div class="product-one">
                         <?php $curr = json_decode($_COOKIE['currency']); ?>
                         @foreach($products as $product)
@@ -44,6 +45,10 @@
                         <div class="clearfix"></div>
                     </div>
                     {{$products->links()}}
+                    @else
+                        <p class="not-found-text">{{__('Products of your query not found')}}</p>
+                        <img src="{{asset('/images/product-not-found.png')}}" alt="product not found">
+                    @endif
                 </div>
                 <div class="col-md-3 prdt-right">
                     <div class="w_sidebar">

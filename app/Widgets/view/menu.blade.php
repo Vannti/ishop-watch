@@ -32,8 +32,6 @@
         </div>
     </li>
 
-    <li class="grid"><a href="typo.html">Blog</a>
-    </li>
-    <li class="grid"><a href="contact.html">Contact</a>
+    <li class="grid"><a href="contact.html">{{__('Contact')}}</a>
     </li>
 </ul>

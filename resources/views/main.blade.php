@@ -8,13 +8,13 @@
     <div  id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
             <li>
-                <img src="{{asset('images/bnr-1.jpg')}}" alt=""/>
+                <img src="{{asset('/images/bnr-1.jpg')}}" alt=""/>
             </li>
             <li>
-                <img src="{{asset('images/bnr-2.jpg')}}" alt=""/>
+                <img src="{{asset('/images/bnr-2.jpg')}}" alt=""/>
             </li>
             <li>
-                <img src="{{asset('images/bnr-3.jpg')}}" alt=""/>
+                <img src="{{asset('/images/bnr-3.jpg')}}" alt=""/>
             </li>
         </ul>
     </div>
