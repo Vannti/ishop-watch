@@ -68,7 +68,7 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a class="btn btn-default" href="#">
+                                    <a class="btn btn-default" href="{{route('orders')}}">
                                         {{__('My orders')}}
                                     </a>
                                 </li>
@@ -207,7 +207,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Continue buying')}}</button>
-                <a href="#" type="button" class="btn btn-primary">{{__('Make order')}}</a>
+                <a href="{{route('order.add')}}" type="button" class="btn btn-primary">{{__('Make order')}}</a>
                 <button type="button" class="btn btn-danger" onclick="clearCart();">{{__('Clear cart')}}</button>
             </div>
         </div><!-- /.modal-content -->

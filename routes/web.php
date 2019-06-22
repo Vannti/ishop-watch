@@ -40,3 +40,9 @@ Route::get('/cart/clear', 'CartController@clear')->name('cart.clear');
 Route::get('/search/typeahead', 'SearchController@typeahead')->name('search.typeahead');
 
 Route::get('/search', 'SearchController@index')->name('search');
+
+Route::get('/order/add', 'OrderController@add')->name('order.add');
+
+Route::get('/orders', 'OrderController@index')->name('orders');
+
+Route::post('/order/make/', 'OrderController@makeOrder')->name('order.makeOrder');

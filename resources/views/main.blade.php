@@ -30,11 +30,13 @@
                 @foreach($brands as $brand)
                     <div class="col-md-4 about-left">
                         <figure class="effect-bubba">
-                            <img class="img-responsive" src="{{asset('images/'.$brand->img)}}" alt=""/>
-                            <figcaption>
-                                <h2>{{$brand->title}}</h2>
-                                <p>{{$brand->description}}</p>
-                            </figcaption>
+                            <a href="{{route('products.brand', ['brand' => $brand->alias])}}">
+                                <img class="img-responsive" src="{{asset('images/'.$brand->img)}}" alt=""/>
+                                <figcaption>
+                                    <h2>{{$brand->title}}</h2>
+                                    <p>{{$brand->description}}</p>
+                                </figcaption>
+                            </a>
                         </figure>
                     </div>
                 @endforeach

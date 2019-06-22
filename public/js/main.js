@@ -5,7 +5,7 @@ var products = new Bloodhound({
     remote: {
         wildcard: '%QUERY',
         url: '/search/typeahead?query=%QUERY'
-    }
+     }
 });
 
 products.initialize();

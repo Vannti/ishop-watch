@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->Integer('currency_id')->unsigned();
             $table->enum('status', [0,1])->default(0);
             $table->text('note')->default(null)->nullable();
+            $table->float('price')->default(0);
             $table->foreign('currency_id')->references('id')->on('currencies')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')

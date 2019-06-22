@@ -1,10 +1,14 @@
-@if(!empty($_SESSION['cart']))
+@extends('layouts.layout')
+
+@section('title', "Orders")
+
+@section('content')
     <div class="table-responsive">
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th>{{__('Image')}}</th>
-                <th>{{__('Name')}}</th>
+                <th>{{__('Id')}}</th>
+                <th>{{__('Product')}}</th>
                 <th>{{__('Quantity')}}</th>
                 <th>{{__('Price')}}</th>
                 <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
@@ -45,6 +49,4 @@
             </tbody>
         </table>
     </div>
-@else
-    <h3>{{__('Empty')}}</h3>
-@endif
+@endsection

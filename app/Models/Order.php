@@ -9,7 +9,11 @@ class Order extends Model
     protected $table = 'orders';
 
     protected $fillable = [
-        ''
+        'user_id', 'currency_id', 'status', 'note', 'price'
+    ];
+
+    protected $casts = [
+        'status' => 'boolean'
     ];
 
     public function products()

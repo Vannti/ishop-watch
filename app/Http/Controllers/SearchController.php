@@ -22,8 +22,8 @@ class SearchController extends Controller
         if ($request->ajax()){
             $query = !empty(trim($_GET['query'])) ? trim($_GET['query']) : null;
             if ($query){
-                $products = Product::where('title', 'LIKE', "%{$query}%")->take(10);
-                json_encode($products);
+                $products = Product::where('title', 'LIKE', "%{$query}%")->take(10)->get();
+                echo json_encode($products);
             }
         }
         die;
