@@ -29,6 +29,8 @@ Route::get('/products?brand={brand}', 'ProductController@index')->name('products
 
 Route::get('/products?category={category}', 'ProductController@index')->name('products.category');
 
+Route::get('/products/hits', 'ProductController@showHits')->name('products.hits');
+
 Route::get('/cart/add', 'CartController@addProduct')->name('cart.addProduct');
 
 Route::get('/cart/show', 'CartController@show')->name('cart.show');
@@ -45,4 +47,8 @@ Route::get('/order/add', 'OrderController@add')->name('order.add');
 
 Route::get('/orders', 'OrderController@index')->name('orders');
 
-Route::post('/order/make/', 'OrderController@makeOrder')->name('order.makeOrder');
+Route::post('/order/make', 'OrderController@makeOrder')->name('order.makeOrder');
+
+Route::get('/order/delete/{id}', 'OrderController@delete')->name('order.delete');
+
+Route::post('/product/{alias}/add', 'CommentController@add')->name('comment.add');

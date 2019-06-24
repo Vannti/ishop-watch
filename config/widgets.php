@@ -7,6 +7,5 @@
 return [
     'currency' => 'App\Widgets\CurrencyWidget',
     'language' => 'App\Widgets\LanguageWidget',
-    'menu' => 'App\Widgets\MenuWidget',
-    'mm' => 'App\Widgets\mmWidget'
+    'menu' => 'App\Widgets\MenuWidget'
 ];

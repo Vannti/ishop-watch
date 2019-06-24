@@ -16,22 +16,31 @@ class OrderController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        $orders = Order::orderBy('created_at', 'desc')->paginate(5);
+        return view('order.index', [
+            'orders' => $orders
+        ]);
+    }
+
     public function add()
     {
         $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : null;
         $currency = isset($_SESSION['cart.currency']) ? $_SESSION['cart.currency'] : null;
         $cart_sum = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] : null;
         $cart_qty = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] : null;
-        if ($cart){
-            return view('order.add', [
-                'cart' => $cart,
-                'currency' => $currency,
-                'cart_sum' => $cart_sum,
-                'cart_qty' => $cart_qty
-            ]);
+
+        if (!$cart){
+            return redirect()->back();
         }
 
-        return redirect()->back();
+        return view('order.add', [
+            'cart' => $cart,
+            'currency' => $currency,
+            'cart_sum' => $cart_sum,
+            'cart_qty' => $cart_qty
+        ]);
     }
 
     public function makeOrder(Request $request)
@@ -63,14 +72,19 @@ class OrderController extends Controller
         }
 
         $request->session()->flash('flash_message', 'Order successfully processed');
+
         return redirect()->route('orders');
     }
 
-    public function index()
+    public function delete($id)
     {
-        $orders = Order::orderBy('created_at', 'desc')->paginate(10);
-        return view('order.index', [
-            'orders' => $orders
-        ]);
+        $order = Order::findOrFail($id);
+        if (!$order->delete()){
+            return redirect()->back()->withErrors('Cancel Error');
+        }
+
+        session()->flash('flash_message', "Order by id: {$id} is canceled");
+        return redirect()->back();
     }
+
 }

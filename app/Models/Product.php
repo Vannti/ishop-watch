@@ -29,7 +29,7 @@ class Product extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'orders_products',
-            'product_id', 'order_id');
+            'product_id', 'order_id')->withPivot('qty', 'price');
     }
 
     public function brand()
@@ -40,5 +40,10 @@ class Product extends Model
     public function galleries()
     {
         return $this->hasMany(Gallery::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

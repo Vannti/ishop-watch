@@ -33,8 +33,18 @@ class ProductController extends Controller
     public function show($alias)
     {
         $product = Product::where('alias', $alias)->first();
+        $comments = $product->comments()->orderBy('created_at')->paginate(5);
         return view('product.show', [
             'product' => $product,
+            'comments' => $comments
+        ]);
+    }
+
+    public function showHits()
+    {
+        $products = Product::where('hit', '1')->orderBy('alias')->paginate(6);
+        return view('product.index', [
+            'products' => $products,
         ]);
     }
 }

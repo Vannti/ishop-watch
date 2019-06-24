@@ -1,4 +1,4 @@
-<ul class="memenu skyblue"><li class="active"><a href="{{route('main')}}">{{__('Main')}}</a></li>
+<ul class="memenu skyblue"><li><a href="{{route('main')}}">{{__('Main')}}</a></li>
     <li class="grid"><a href="{{route('products')}}">{{__('Products')}}</a>
         <div class="mepanel">
             <div class="row">

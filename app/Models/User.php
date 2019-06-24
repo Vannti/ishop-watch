@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function hasAccess(array $permissions): bool
     {
         foreach ($this->roles as $role){

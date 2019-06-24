@@ -75,76 +75,36 @@
                     </div>
                     <div class="tabs">
                         <ul class="menu_drop">
-                            <li class="item1"><a href="#"><img src="/images/arrow.png" alt="">Description</a>
+                            <li class="item1"><a href="#"><img src="{{asset('/images/arrow.png')}}" alt="">{{__('Description')}}</a>
                                 <ul>
-                                    <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                                    <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                    <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+                                    <li class="subitem1"><a href="#">{{$product->description}}</a></li>
                                 </ul>
                             </li>
-                            <li class="item3"><a href="#"><img src="/images/arrow.png" alt="">Reviews (10)</a>
+                            <li class="item1"><a href="#"><img src="{{asset('/images/arrow.png')}}" alt="">{{__('Add Comment')}}</a>
                                 <ul>
-                                    <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                                    <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                                    <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+                                    <form method="POST" action="{{route('comment.add', ['alias' => $product->alias])}}" role="form">
+                                        @csrf
+                                        <textarea name="text" class="form-control" placeholder="{{__('Text comment')}}"></textarea>
+                                        <input type="submit" class="btn btn-default" value="{{__('Add')}}">
+                                    </form>
                                 </ul>
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-md-3 single-right">
-                    <div class="w_sidebar">
-                        <section  class="sky-form">
-                            <h4>Catogories</h4>
-                            <div class="row1 scroll-pane">
-                                <div class="col col-4">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
-                                </div>
-                                <div class="col col-4">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
-                                </div>
-                            </div>
-                        </section>
-                        <section  class="sky-form">
-                            <h4>Brand</h4>
-                            <div class="row1 row2 scroll-pane">
-                                <div class="col col-4">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-                                </div>
-                                <div class="col col-4">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-                                    <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>
-                                </div>
-                            </div>
-                        </section>
 
-                        <section class="sky-form">
-                            <h4>discount</h4>
-                            <div class="row1 row2 scroll-pane">
-                                <div class="col col-4">
-                                    <label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>
-                                    <label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>
-                                    <label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>
-                                </div>
-                                <div class="col col-4">
-                                    <label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>
-                                    <label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
-                                    <label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
-                                </div>
-                            </div>
-                        </section>
+                    @include('partial.error')
+                    @include('partial.success')
+                    @foreach($comments as $comment)
+                    <div class="media border p-3">
+                        <img src="{{asset('images/img_avatar_user.png')}}" alt="user_avatar" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                        <div class="media-body">
+                            <h4>{{$comment->user->login}}<small><i>Posted on {{$comment->created_at}}</i></small></h4>
+                            <p>{{$comment->text}}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                    <div class="pagination">
+                        {{$comments->links()}}
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -153,8 +113,8 @@
     </div>
 
     <!-- FlexSlider -->
-    <script src="/js/imagezoom.js"></script>
-    <script defer src="/js/jquery.flexslider.js"></script>
+    <script src="{{asset('/js/imagezoom.js')}}"></script>
+    <script defer src="{{asset('/js/jquery.flexslider.js')}}"></script>
 
     <script>
         // Can also be used with $(document).ready()

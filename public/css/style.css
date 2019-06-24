@@ -3073,7 +3073,7 @@ ul.tag-men {
 }
 
 .cart-img {
-	height: 120px;
+	height: 100px;
 }
 
 .del-item {
@@ -3177,7 +3177,20 @@ span.twitter-typeahead {
 }
 /*search*/
 
-.not-found-text {
+.not-found-box {
 	font-size: 20px;
 	font-weight: bold;
+	margin-bottom: 30px;
 }
+
+.order-box {
+	font-size: 14px;
+	font-weight: bold;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+}
+
+/*Comments*/
+
+/*Comments*/
+
