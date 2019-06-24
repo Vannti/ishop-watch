@@ -23,12 +23,9 @@ class RolesSeeder extends Seeder
             'name' => 'Admin',
             'slug' => 'admin',
             'permissions' => [
-                'add-orders' => true,
-                'add-categories' =>true,
-                'edit-categories' => true,
-                'add-currency' => true,
-                'add-product' => true,
-                'edit-product' => true
+                'add-content' => true,
+                'edit-content' => true,
+                'delete-content' => true
             ]
         ]);
     }

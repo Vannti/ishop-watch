@@ -32,6 +32,6 @@
         </div>
     </li>
 
-    <li class="grid"><a href="contact.html">{{__('Contact')}}</a>
+    <li class="grid"><a href="{{route('contact')}}">{{__('Contact')}}</a>
     </li>
 </ul>

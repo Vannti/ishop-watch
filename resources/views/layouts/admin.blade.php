@@ -23,29 +23,8 @@
 <div class="top-header">
     <div class="container">
         <div class="top-header-main">
-            <div class="col-md-6 top-header-left">
-                <div class="drop">
-                    <div class="box">
-                        @widget('currency')
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="col-md-6 top-header-left">
+            <div class="top-header-left">
                 <div class="cart box_1">
-                    <a href="#" onclick="getCart(); return false;">
-                        <div class="total">
-                            <img src="{{asset('/images/cart-1.png')}}" alt="" />
-                            @if(!empty($_SESSION['cart']))
-                                <span class="simpleCart_total">
-                                    {{$_SESSION['cart.currency']->symbol}}
-                                    {{$_SESSION['cart.sum']}}
-                                </span>
-                            @else
-                                <span class="simpleCart_total">{{__('Empty')}}</span>
-                            @endif
-                        </div>
-                    </a>
                     @guest
                         <a class="btn btn-default" href="{{ route('login') }}">{{ __('Login') }}</a>
                         @if(Route::has('register'))
@@ -60,15 +39,8 @@
                             </button>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a class="btn btn-default" href="{{route('orders')}}">
-                                        {{__('My orders')}}
-                                    </a>
+                                    <a class="btn btn-default" href="{{route('main')}}">{{__('User Panel')}}</a>
                                 </li>
-                                @if(Auth::user()->hasRole('admin'))
-                                    <li>
-                                        <a class="btn btn-default" href="{{route('admin.main')}}">{{__('Admin Panel')}}</a>
-                                    </li>
-                                @endif
                                 <li>
                                     <a class="btn btn-default" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -92,7 +64,7 @@
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="{{route('main')}}"><h1>{{__('Watches shop')}}</h1></a>
+    <a href="{{route('admin.main')}}"><h1>{{__('Admin panel')}}</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -101,7 +73,26 @@
         <div class="header">
             <div class="col-md-9 header-left">
                 <div class="top-nav">
-                    @widget('menu')
+                    <ul class="memenu skyblue">
+                        <li>
+                            <a href="{{route('admin.main')}}">{{__('Main')}}</a>
+                        </li>
+                        <li class="grid">
+                            <a href="{{route('admin.categories')}}">{{__('Categories')}}</a>
+                        </li>
+                        <li class="grid">
+                            <a href="{{route('admin.brands')}}">{{__('Brands')}}</a>
+                        </li>
+                        <li class="grid">
+                            <a href="{{route('admin.currencies')}}">{{__('Currencies')}}</a>
+                        </li>
+                        <li class="grid">
+                            <a href="{{route('admin.products')}}">{{__('Products')}}</a>
+                        </li>
+                        <li class="grid">
+                            <a href="{{route('admin.orders')}}">{{__('Orders')}}</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -125,35 +116,6 @@
     @yield('content')
 </div>
 
-<!--information-starts-->
-<div class="information">
-    <div class="container">
-        <div class="infor-top">
-            <div class="col-md-3 infor-left">
-                <h3>Information</h3>
-                <ul>
-                    <li><a href="{{route('products')}}"><p>{{__('Products')}}</p></a></li>
-                    <li><a href="{{route('products.hits')}}"><p>{{__('Hits')}}</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>My Account</h3>
-                <ul>
-                    <li><a href={{route('orders')}}><p>{{__('My Orders')}}</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Store Information</h3>
-                <h4>The course work,
-                    <span>on WEB 3 course</span>
-                </h4>
-                <h5>Thanks for watching</h5>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--information-end-->
 <!--footer-starts-->
 <div class="footer">
     <div class="container">
@@ -166,29 +128,6 @@
     </div>
 </div>
 <!--footer-end-->
-
-<!--Modal-start-->
-<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">{{__('Cart')}}</h4>
-            </div>
-            <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Continue buying')}}</button>
-                <a href="{{route('order.add')}}" type="button" class="btn btn-primary">{{__('Make order')}}</a>
-                <button type="button" class="btn btn-danger" onclick="clearCart();">{{__('Clear cart')}}</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
-<!--modal-end-->
 
 
 <script src="{{asset('/js/typeahead.bundle.js')}}"></script>
