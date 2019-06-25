@@ -24,7 +24,9 @@
                                 </ul>
                             </div>
                             @else
-                                <img src="{{asset('images/'.$product->img)}}" alt="{{$product->alias}}">
+                                <div id="products">
+                                    <img src="{{asset('images/'.$product->img)}}" alt="{{$product->alias}}">
+                                </div>
                             @endif
                         </div>
 
@@ -96,7 +98,7 @@
                     @include('partial.success')
                     @foreach($comments as $comment)
                     <div class="media border p-3">
-                        <img src="{{asset('images/img_avatar_user.png')}}" alt="user_avatar" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                        <img src="{{asset('images/comments.png')}}" alt="user_avatar" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                         <div class="media-body">
                             <h4>{{$comment->user->login}}<small><i>Posted on {{$comment->created_at}}</i></small></h4>
                             <p>{{$comment->text}}</p>

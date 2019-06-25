@@ -28,7 +28,7 @@
         <div class="container">
             <div class="about-top grid-1">
                 @foreach($brands as $brand)
-                    <div class="col-md-4 about-left">
+                    <div class="col-md-4 about-left brands">
                         <figure class="effect-bubba">
                             <a href="{{route('products.brand', ['brand' => $brand->alias])}}">
                                 <img class="img-responsive" src="{{asset('images/'.$brand->img)}}" alt=""/>
@@ -56,7 +56,7 @@
             <div class="product-one">
                 @foreach($hits as $hit)
                 <div class="col-md-3 product-left">
-                    <div class="product-main simpleCart_shelfItem">
+                    <div id="products" class="product-main simpleCart_shelfItem">
                         <a href="{{route('product.show', ['alias' => $hit->alias])}}" class="mask">
                             <img class="img-responsive zoom-img" src="{{asset('images/'.$hit->img)}}" alt="" />
                         </a>

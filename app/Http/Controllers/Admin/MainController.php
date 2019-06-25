@@ -9,6 +9,7 @@ class MainController extends Controller
 {
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('can:add-content');
         $this->middleware('can:edit-content');
         $this->middleware('can:delete-content');

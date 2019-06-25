@@ -74,7 +74,7 @@ class RegisterController extends Controller
             return $user;
         }
         catch (\Exception $ex){
-            log($ex->getMessage());
+            return redirect()->back()->withErrors('Register error');
         }
     }
 }

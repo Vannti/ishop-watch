@@ -6,6 +6,9 @@
     <div class="container">
         @include('partial.error')
         @include('partial.success')
+        <div class="ckeck-top heading">
+            <h2>{{__('My Orders')}}</h2>
+        </div>
         @if(count($orders))
         <div class="table-responsive">
             @foreach($orders as $order)

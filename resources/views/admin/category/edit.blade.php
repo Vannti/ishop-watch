@@ -13,11 +13,11 @@
                 @csrf
                 <div class="form-group">
                     <input class="form-control" name="title" type="text"
-                           value="{{$category->title}}" placeholder="{{__('title')}}">
+                           value="{{$category->title}}" placeholder="{{__('title')}}" required>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="alias" type="text"
-                           value="{{$category->alias}}" placeholder="{{__('alias')}}">
+                           value="{{$category->alias}}" placeholder="{{__('alias')}}" required>
                 </div>
                 <div class="form-group">
                     <input class="form-control" name="keywords" type="text"

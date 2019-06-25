@@ -42,7 +42,6 @@
                     $('.events').append("<li>after event fired.</li>");
                 }
             });
-
         });
     </script>
     <!--End-slider-script-->

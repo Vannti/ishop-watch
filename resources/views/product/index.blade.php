@@ -12,7 +12,7 @@
                         <?php $curr = json_decode($_COOKIE['currency']); ?>
                         @foreach($products as $product)
                         <div class="col-md-4 product-left p-left">
-                            <div class="product-main simpleCart_shelfItem">
+                            <div id="products" class="product-main simpleCart_shelfItem">
                                 <a href="{{route('product.show', ['alias' => $product->alias])}}" class="mask">
                                     <img class="img-responsive zoom-img" src="{{asset('images/'.$product->img)}}" alt="{{$product->alias}}">
                                 </a>

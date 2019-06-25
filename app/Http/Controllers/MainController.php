@@ -11,7 +11,7 @@ class MainController extends Controller
 
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::all()->take(6);
 
         $hits = Product::all()->where('hit','1')->take(8);
 

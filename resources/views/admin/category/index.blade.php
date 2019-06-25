@@ -11,14 +11,25 @@
         </div>
 
         <div class="row justify-content-center">
+            <div class="col-md-3 header-right">
+                <div class="search-bar">
+                    <form action="{{route('admin.search.category')}}" method="GET" autocomplete="off">
+                        <input type="text" class="typeahead" id="typeahead" name="s" placeholder="{{__('Search title')}}">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
             <div class="col-md-6">
                 <form method="POST" action="{{route('admin.categories.create')}}">
                     @csrf
                     <div class="form-group">
-                        <input class="form-control" name="title" type="text" placeholder="{{__('title')}}">
+                        <input class="form-control" name="title" type="text" placeholder="{{__('title')}}" required>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" name="alias" type="text" placeholder="{{__('alias')}}">
+                        <input class="form-control" name="alias" type="text" placeholder="{{__('alias')}}" required>
                     </div>
                     <div class="form-group">
                         <input class="form-control" name="keywords" type="text" placeholder="{{__('keywords')}}">
@@ -94,4 +105,6 @@
         </div>
         <div class="clearfix"></div>
     </div>
+
+    <script src="{{asset('js/admin/searchCategories.js')}}"></script>
 @endsection

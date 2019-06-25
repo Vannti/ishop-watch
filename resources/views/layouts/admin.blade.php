@@ -7,7 +7,7 @@
     <script src="{{ asset('/js/jquery-1.11.0.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js')}} "></script>
     <script src="{{ asset('/js/popper.min.js') }}" defer></script>
-
+    <script src="{{asset('/js/typeahead.bundle.js')}}"></script>
     <script src="{{ asset('js/jquery.easydropdown.js') }}"></script>
     <!--theme-style-->
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -92,20 +92,14 @@
                         <li class="grid">
                             <a href="{{route('admin.orders')}}">{{__('Orders')}}</a>
                         </li>
+                        <li class="grid">
+                            <a href="{{route('admin.users')}}">{{__('Users')}}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="clearfix"> </div>
             </div>
-            <div class="col-md-3 header-right">
-                <div class="search-bar">
-                    <form action="{{route('search')}}" method="GET" autocomplete="off">
-                        <input type="text" class="typeahead" id="typeahead" name="s" placeholder="{{__('Search')}}">
-                        <input type="submit" value="">
-                    </form>
-                    <!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">-->
-                </div>
-            </div>
+
             <div class="clearfix"> </div>
         </div>
     </div>
@@ -130,8 +124,6 @@
 <!--footer-end-->
 
 
-<script src="{{asset('/js/typeahead.bundle.js')}}"></script>
-<script src="{{ asset('/js/main.js') }}"></script>
 <!--<script src="{{ asset('/js/simpleCart.min.js') }}"> </script>-->
 <script type="text/javascript" src="{{ asset('/js/memenu.js') }}"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>

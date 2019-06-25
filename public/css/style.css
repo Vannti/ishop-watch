@@ -3190,7 +3190,21 @@ span.twitter-typeahead {
 	border-top: solid 1px;
 }
 
-/*Comments*/
+.brands {
+	margin-top: 20px;
+}
 
-/*Comments*/
+.brands img{
+	height: 250px;
+}
+
+#products {
+	margin-top: 20px;
+}
+
+#products img {
+	height: 200px;
+}
+
+
 

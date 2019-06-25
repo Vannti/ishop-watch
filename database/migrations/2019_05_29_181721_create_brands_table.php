@@ -17,7 +17,7 @@ class CreateBrandsTable extends Migration
             $table->Increments('id');
             $table->string('title');
             $table->string('alias')->unique();
-            $table->string('img')->default('brand_no_image.jpg');
+            $table->string('img')->default('no_image.jpg')->nullable();
             $table->string('description')->nullable();
         });
     }
